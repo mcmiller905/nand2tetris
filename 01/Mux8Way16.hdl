@@ -19,4 +19,196 @@ CHIP Mux8Way16 {
 
     PARTS:
     // Put your code here:
+
+    // index:0
+    // first group
+    Mux (a=a[0], b=b[0], sel=sel[0], out=abMux0);
+    Mux (a=c[0], b=d[0], sel=sel[0], out=cdMux0);
+    Mux (a=e[0], b=f[0], sel=sel[0], out=efMux0);
+    Mux (a=g[0], b=h[0], sel=sel[0], out=ghMux0);
+    // second group
+    Mux (a=abMux0, b=cdMux0, sel=sel[1], out=abcdMux0);
+    Mux (a=efMux0, b=ghMux0, sel=sel[1], out=efghMux0);
+    // last group
+    Mux (a=abcdMux0, b=efghMux0, sel=sel[2], out=out[0]);
+
+    // index:1
+    // first group
+    Mux (a=a[1], b=b[1], sel=sel[0], out=abMux1);
+    Mux (a=c[1], b=d[1], sel=sel[0], out=cdMux1);
+    Mux (a=e[1], b=f[1], sel=sel[0], out=efMux1);
+    Mux (a=g[1], b=h[1], sel=sel[0], out=ghMux1);
+    // second group
+    Mux (a=abMux1, b=cdMux1, sel=sel[1], out=abcdMux1);
+    Mux (a=efMux1, b=ghMux1, sel=sel[1], out=efghMux1);
+    // last group
+    Mux (a=abcdMux1, b=efghMux1, sel=sel[2], out=out[1]);
+
+    // index:2
+    // first group
+    Mux (a=a[2], b=b[2], sel=sel[0], out=abMux2);
+    Mux (a=c[2], b=d[2], sel=sel[0], out=cdMux2);
+    Mux (a=e[2], b=f[2], sel=sel[0], out=efMux2);
+    Mux (a=g[2], b=h[2], sel=sel[0], out=ghMux2);
+    // second group
+    Mux (a=abMux2, b=cdMux2, sel=sel[1], out=abcdMux2);
+    Mux (a=efMux2, b=ghMux2, sel=sel[1], out=efghMux2);
+    // last group
+    Mux (a=abcdMux2, b=efghMux2, sel=sel[2], out=out[2]);
+
+    // index:3
+    // first group
+    Mux (a=a[3], b=b[3], sel=sel[0], out=abMux3);
+    Mux (a=c[3], b=d[3], sel=sel[0], out=cdMux3);
+    Mux (a=e[3], b=f[3], sel=sel[0], out=efMux3);
+    Mux (a=g[3], b=h[3], sel=sel[0], out=ghMux3);
+    // second group
+    Mux (a=abMux3, b=cdMux3, sel=sel[1], out=abcdMux3);
+    Mux (a=efMux3, b=ghMux3, sel=sel[1], out=efghMux3);
+    // last group
+    Mux (a=abcdMux3, b=efghMux3, sel=sel[2], out=out[3]);
+
+    // index:4
+    // first group
+    Mux (a=a[4], b=b[4], sel=sel[0], out=abMux4);
+    Mux (a=c[4], b=d[4], sel=sel[0], out=cdMux4);
+    Mux (a=e[4], b=f[4], sel=sel[0], out=efMux4);
+    Mux (a=g[4], b=h[4], sel=sel[0], out=ghMux4);
+    // second group
+    Mux (a=abMux4, b=cdMux4, sel=sel[1], out=abcdMux4);
+    Mux (a=efMux4, b=ghMux4, sel=sel[1], out=efghMux4);
+    // last group
+    Mux (a=abcdMux4, b=efghMux4, sel=sel[2], out=out[4]);
+
+    // index:5
+    // first group
+    Mux (a=a[5], b=b[5], sel=sel[0], out=abMux5);
+    Mux (a=c[5], b=d[5], sel=sel[0], out=cdMux5);
+    Mux (a=e[5], b=f[5], sel=sel[0], out=efMux5);
+    Mux (a=g[5], b=h[5], sel=sel[0], out=ghMux5);
+    // second group
+    Mux (a=abMux5, b=cdMux5, sel=sel[1], out=abcdMux5);
+    Mux (a=efMux5, b=ghMux5, sel=sel[1], out=efghMux5);
+    // last group
+    Mux (a=abcdMux5, b=efghMux5, sel=sel[2], out=out[5]);
+
+    // index:6
+    // first group
+    Mux (a=a[6], b=b[6], sel=sel[0], out=abMux6);
+    Mux (a=c[6], b=d[6], sel=sel[0], out=cdMux6);
+    Mux (a=e[6], b=f[6], sel=sel[0], out=efMux6);
+    Mux (a=g[6], b=h[6], sel=sel[0], out=ghMux6);
+    // second group
+    Mux (a=abMux6, b=cdMux6, sel=sel[1], out=abcdMux6);
+    Mux (a=efMux6, b=ghMux6, sel=sel[1], out=efghMux6);
+    // last group
+    Mux (a=abcdMux6, b=efghMux6, sel=sel[2], out=out[6]);
+
+    // index:7
+    // first group
+    Mux (a=a[7], b=b[7], sel=sel[0], out=abMux7);
+    Mux (a=c[7], b=d[7], sel=sel[0], out=cdMux7);
+    Mux (a=e[7], b=f[7], sel=sel[0], out=efMux7);
+    Mux (a=g[7], b=h[7], sel=sel[0], out=ghMux7);
+    // second group
+    Mux (a=abMux7, b=cdMux7, sel=sel[1], out=abcdMux7);
+    Mux (a=efMux7, b=ghMux7, sel=sel[1], out=efghMux7);
+    // last group
+    Mux (a=abcdMux7, b=efghMux7, sel=sel[2], out=out[7]);
+
+    // index:8
+    // first group
+    Mux (a=a[8], b=b[8], sel=sel[0], out=abMux8);
+    Mux (a=c[8], b=d[8], sel=sel[0], out=cdMux8);
+    Mux (a=e[8], b=f[8], sel=sel[0], out=efMux8);
+    Mux (a=g[8], b=h[8], sel=sel[0], out=ghMux8);
+    // second group
+    Mux (a=abMux8, b=cdMux8, sel=sel[1], out=abcdMux8);
+    Mux (a=efMux8, b=ghMux8, sel=sel[1], out=efghMux8);
+    // last group
+    Mux (a=abcdMux8, b=efghMux8, sel=sel[2], out=out[8]);
+
+    // index:9
+    // first group
+    Mux (a=a[9], b=b[9], sel=sel[0], out=abMux9);
+    Mux (a=c[9], b=d[9], sel=sel[0], out=cdMux9);
+    Mux (a=e[9], b=f[9], sel=sel[0], out=efMux9);
+    Mux (a=g[9], b=h[9], sel=sel[0], out=ghMux9);
+    // second group
+    Mux (a=abMux9, b=cdMux9, sel=sel[1], out=abcdMux9);
+    Mux (a=efMux9, b=ghMux9, sel=sel[1], out=efghMux9);
+    // last group
+    Mux (a=abcdMux9, b=efghMux9, sel=sel[2], out=out[9]);
+
+    // index:10
+    // first group
+    Mux (a=a[10], b=b[10], sel=sel[0], out=abMux10);
+    Mux (a=c[10], b=d[10], sel=sel[0], out=cdMux10);
+    Mux (a=e[10], b=f[10], sel=sel[0], out=efMux10);
+    Mux (a=g[10], b=h[10], sel=sel[0], out=ghMux10);
+    // second group
+    Mux (a=abMux10, b=cdMux10, sel=sel[1], out=abcdMux10);
+    Mux (a=efMux10, b=ghMux10, sel=sel[1], out=efghMux10);
+    // last group
+    Mux (a=abcdMux10, b=efghMux10, sel=sel[2], out=out[10]);
+
+    // index:11
+    // first group
+    Mux (a=a[11], b=b[11], sel=sel[0], out=abMux11);
+    Mux (a=c[11], b=d[11], sel=sel[0], out=cdMux11);
+    Mux (a=e[11], b=f[11], sel=sel[0], out=efMux11);
+    Mux (a=g[11], b=h[11], sel=sel[0], out=ghMux11);
+    // second group
+    Mux (a=abMux11, b=cdMux11, sel=sel[1], out=abcdMux11);
+    Mux (a=efMux11, b=ghMux11, sel=sel[1], out=efghMux11);
+    // last group
+    Mux (a=abcdMux11, b=efghMux11, sel=sel[2], out=out[11]);
+
+    // index:12
+    // first group
+    Mux (a=a[12], b=b[12], sel=sel[0], out=abMux12);
+    Mux (a=c[12], b=d[12], sel=sel[0], out=cdMux12);
+    Mux (a=e[12], b=f[12], sel=sel[0], out=efMux12);
+    Mux (a=g[12], b=h[12], sel=sel[0], out=ghMux12);
+    // second group
+    Mux (a=abMux12, b=cdMux12, sel=sel[1], out=abcdMux12);
+    Mux (a=efMux12, b=ghMux12, sel=sel[1], out=efghMux12);
+    // last group
+    Mux (a=abcdMux12, b=efghMux12, sel=sel[2], out=out[12]);
+
+    // index:13
+    // first group
+    Mux (a=a[13], b=b[13], sel=sel[0], out=abMux13);
+    Mux (a=c[13], b=d[13], sel=sel[0], out=cdMux13);
+    Mux (a=e[13], b=f[13], sel=sel[0], out=efMux13);
+    Mux (a=g[13], b=h[13], sel=sel[0], out=ghMux13);
+    // second group
+    Mux (a=abMux13, b=cdMux13, sel=sel[1], out=abcdMux13);
+    Mux (a=efMux13, b=ghMux13, sel=sel[1], out=efghMux13);
+    // last group
+    Mux (a=abcdMux13, b=efghMux13, sel=sel[2], out=out[13]);
+
+    // index:14
+    // first group
+    Mux (a=a[14], b=b[14], sel=sel[0], out=abMux14);
+    Mux (a=c[14], b=d[14], sel=sel[0], out=cdMux14);
+    Mux (a=e[14], b=f[14], sel=sel[0], out=efMux14);
+    Mux (a=g[14], b=h[14], sel=sel[0], out=ghMux14);
+    // second group
+    Mux (a=abMux14, b=cdMux14, sel=sel[1], out=abcdMux14);
+    Mux (a=efMux14, b=ghMux14, sel=sel[1], out=efghMux14);
+    // last group
+    Mux (a=abcdMux14, b=efghMux14, sel=sel[2], out=out[14]);
+
+    // index:15
+    // first group
+    Mux (a=a[15], b=b[15], sel=sel[0], out=abMux15);
+    Mux (a=c[15], b=d[15], sel=sel[0], out=cdMux15);
+    Mux (a=e[15], b=f[15], sel=sel[0], out=efMux15);
+    Mux (a=g[15], b=h[15], sel=sel[0], out=ghMux15);
+    // second group
+    Mux (a=abMux15, b=cdMux15, sel=sel[1], out=abcdMux15);
+    Mux (a=efMux15, b=ghMux15, sel=sel[1], out=efghMux15);
+    // last group
+    Mux (a=abcdMux15, b=efghMux15, sel=sel[2], out=out[15]);
 }
