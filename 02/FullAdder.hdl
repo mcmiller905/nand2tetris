@@ -14,4 +14,9 @@ CHIP FullAdder {
 
     PARTS:
     // Put you code here:
+    HalfAdder (a=b, b=c, sum=halfSum, carry=halfCarry);
+    Not (in=halfSum, out=notHalfSum);
+    Or (a=b, b=c, out=orCarry);
+    Mux (a=halfSum, b=notHalfSum, sel=a, out=sum);
+    Mux (a=halfCarry, b=orCarry, sel=a, out=carry);
 }
