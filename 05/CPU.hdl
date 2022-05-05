@@ -39,23 +39,42 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
+    // Put your code here :
+    Mux(a=false, b=true, sel=instruction[15], out=Cinst);
+    Not(in=Cinst, out=Ainst);                                                   // create Cinst and Ainst values, determined by instruction[15]
+    
+    // A-reg
+    And(a=Cinst, b=instruction[5], out=ALUout2A);                               // 1 if we want to put the ALU output into the A-reg
+    Mux16(a=instruction, b=aluOut, sel=ALUout2A, out=instOut);                  // determines if instOut should contain the value from instruction or ALU (determined by above line)
+    Or(a=Ainst, b=ALUout2A, out=loadAReg);                                      // set the load bit for A-reg, if we have either an A isntruction or we're loading from ALU output
+    ARegister(in=instOut, load=loadAReg, out=AOut, out[0..14]=addressM);        // set A-reg and send value to addressM [[[OUTPUT VARIABLE]]]
 
-    Mux16(a=aluOut, b=instruction, sel=instruction[12], out=instOut);
+    // D-reg
+    And(a=Cinst, b=instruction[4], out=loadDReg);
+    DRegister(in=aluOut, load=loadDReg, out=DOut);                              // if instruction[4] is 1 and this is a C-instruction, load ALU output into D-reg
 
-    //A-reg
-    ARegister(in=instOut, load=instruction[5], out=AOut, out[0..14]=addressM);
-
-    //D-reg
-    DRegister(in=aluOut, load=instruction[4], out=DOut);
-
-    //PC
-    PC(in=AOut, load=false, inc=true, reset=reset, out[0..14]=pc);
+    // Determine A or M
+    And(a=instruction[12], b=Cinst, out=useAorM);                               // if this is a C-instruction, we need to check instruction[12] to determine if we use A or M
+    Mux16(a=AOut, b=inM, sel=useAorM, out=AorMOut);                             // A = the value in the A-reg, M = the value coming in from memory
 
     // ALU
-    Mux16(a=AOut, b=inM, sel=instruction[15], out=inMOut);
-    ALU(x=DOut, y=inMOut, zx=instruction[11], nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=aluOut, zr=zr, ng=ng);
-    //DMux16(in=aluOut, sel=instruction[#], a=, b=);
+    ALU(x=DOut, y=AorMOut,                                                      // set up ALU with both inputs and all the control bits
+        zx=instruction[11], nx=instruction[10], zy=instruction[9],
+        ny=instruction[8], f=instruction[7], no=instruction[6],
+        out=aluOut, out=outM, zr=zr, ng=ng);                                    // output to aluOut to be used internally and outM [[[OUTPUT VARIABLE]]]
 
-    Mux(a=true, b=false, sel=instruction[3], out=writeM);
+    // PC
+    And(a=ng, b=instruction[2], out=jlt);                                       // if instruction[2] is set and ALU output ng is 1, jlt is 1
+    And(a=zr, b=instruction[1], out=jeq);                                       // if instruction[1] is set and ALU output zr is 1, jeq is 1
+    Or(a=jlt, b=jeq, out=jle);                                                  // jle is 1 if either less than OR equal to are 1
+    Or(a=zr, b=ng, out=zrORng);                                                 //  |
+    Not(in=zrORng, out=greaterThan);                                            // compute jgt by getting NOT(zr OR ng)
+    And(a=greaterThan, b=instruction[0], out=jgt);                              //  |
+    Or(a=jle, b=jgt, out=jump);                                                 // jump is true if either jle or jgt are true, that covers all 3 j inst bits
+    And(a=Cinst, b=jump, out=loadAddr);                                         // only load into PC if this is a C-instruction
+    Not(in=loadAddr, out=inc);                                                  // inc if not jump
+    PC(in=AOut, load=loadAddr, inc=inc, reset=reset, out[0..14]=pc);            // set the program counter and output its contents [[[OUTPUT VARIABLE]]]
+
+    // writeM bit
+    Mux(a=false, b=instruction[15], sel=instruction[3], out=writeM);            // use the instruction[3] bit to determine if we writeM [[[OUTPUT VARIABLE]]]
 }
