@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch VMTranslator",
+            "request": "launch",
+            "mainClass": "seven.VMTranslator",
+            "projectName": "nand2tetris_34675ee5"
+        },
+        {
+            "type": "java",
+            "name": "Launch VMTranslator",
+            "request": "launch",
+            "mainClass": "VMTranslator",
+            "projectName": "nand2tetris_34675ee5"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
